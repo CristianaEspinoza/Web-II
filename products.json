@@ -4992,14 +4992,7 @@
       "rating": 4.6
     },
     {
-      "id": 1500,
-      "name": "Vintage Vacuum 550",
-      "category": "Home & Kitchen",
-      "subcategory": "Vacuum",
-      "price": 919.03,
-      "currency": "USD",
-      "stock": 32,
-      "rating": 3.1
+      "id": 1500
     },
     null,
     null,

@@ -7,13 +7,13 @@ function hasContent (str){
 }
 
 app.use(express.json())
-app.use(express.urlencoded())//middleware
+app.use(express.urlencoded({ extended: true }))//middleware
 
 app.get("/products", (req, res) => {
     const {search, category, subcategory} = req.query
     let {products} = JSON.parse(fs.readFileSync("./products.json", {encoding: "utf-8"}))
     if (hasContent(category)){
-        products = products.filter(product => product.category.toLowerCase() === category.toLowerCase)
+        products = products.filter(product => product.category.toLowerCase() === category.toLowerCase())
 
     }
     if (hasContent(subcategory)){
@@ -40,5 +40,19 @@ app.post("/products", (req, res) => {
     data.products.push(newProduct)
     fs.writeFileSync("./products.json", JSON.stringify(data, null, 2), {encoding: "utf-8"})
     res.status(201).json(newProduct)
+})
+app.put("/products/:id", (req, res) => {
+    const {body, params: {id}} = req
+    const data = JSON.parse(fs.readFileSync("./products.json", {encoding: "utf-8"}))
+    const productIndex = data.products.findIndex(product => product && product.id === parseInt(id))
+    if (productIndex === -1){
+        res.status(404).json({
+            message: "Product not found"
+        })
+    } else {
+        data.products[productIndex] = {...body, id: parseInt(id)}
+        fs.writeFileSync("./products.json", JSON.stringify(data, null, 2), {encoding: "utf-8"})
+        res.json(data.products[productIndex])
+    }
 })
 app.listen (9000, () => console.log("Server started on http://localhost:9000"))
