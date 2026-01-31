@@ -30,5 +30,6 @@ Update an existing product by its ID.
 
 
 ### Postman Testing
+<img width="1382" height="970" alt="image" src="https://github.com/user-attachments/assets/f834b789-e367-430a-a03c-af9d51d54550" />
 
 
