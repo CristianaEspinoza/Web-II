@@ -1,7 +1,9 @@
 # Web-II
 ## Web Development II course / Spring 2026
 
-
+# Branches 
+- delete: class on 2/4/26
+- put-req: class on 1/31/26
 # Products API
 
 A simple RESTful API built with Node.js and Express for managing a product catalog. Data is persisted in a local JSON file (`products.json`).
